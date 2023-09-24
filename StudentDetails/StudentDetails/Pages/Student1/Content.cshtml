@@ -1,0 +1,54 @@
+﻿@page "/Std"
+@using StudentDetails.Model;
+@model StudentDetails.Pages.Student1.ContentModel
+@{
+}
+
+<h1 class="mb-3">List of Students</h1>
+
+@if (Model.Student != null && Model.Student.Any())
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>StudentId</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>PhoneNo</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+		@*	@foreach (var student in Model.Student)
+			{
+				<tr>
+				    <td>@student.StudentId</td>
+					<td>@student.Name</td>
+					<td>@student.Email</td>
+					<td>@student.PhoneNo</td>
+					
+				</tr>
+			}*@
+		
+			@foreach (var student in Model.Student)
+			{
+				<tr>
+					<td>@student.StudentId</td>
+					<td>@student.Name</td>
+					<td>@student.Email</td>
+					<td>@student.PhoneNo</td>
+					<td><a asp-page="./create" class="btn btn-dark" asp-route-id="@student.StudentId">Create</a>
+						<a asp-page="./Delete" class="btn btn-dark" asp-route-id="@student.StudentId">Delete</a>
+						<a asp-page="./Update" class="btn btn-dark" asp-route-id="@student.StudentId">Update</a>
+					</td>
+					
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<p>No Students found!</p>
+}

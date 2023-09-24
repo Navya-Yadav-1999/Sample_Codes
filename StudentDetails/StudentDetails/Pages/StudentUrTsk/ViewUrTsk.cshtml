@@ -1,0 +1,40 @@
+﻿@page "/UrTsk"
+@model StudentDetails.Pages.StudentUrTsk.ViewUrTskModel
+@{
+}
+
+<h1 class="mb-3">List of data</h1>
+
+@if (Model.StudentUserTask != null )
+{
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>StudentId</th>
+			<th>ProjectId</th>
+			<th>Assigned</th>
+			<th>deasigned</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		@foreach(var UserTask in Model.StudentUserTask)
+		{
+			<tr>
+				<td>@UserTask.Id</td>
+				<td>@UserTask.StudentId</td>
+					
+				<td>@UserTask.ProjectId</td>
+				<td>@UserTask.Assigned</td>
+				<td>@UserTask.deasigned</td>
+			</tr>
+		}
+	</tbody>
+	</table>
+}
+else
+{
+	<p>No Students Found!</p>
+}

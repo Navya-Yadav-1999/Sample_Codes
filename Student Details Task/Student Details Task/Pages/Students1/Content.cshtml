@@ -1,0 +1,37 @@
+﻿@page "/demo"
+@model Student_Details_Task.Pages.Students1.ContentModel
+@{
+}
+
+
+<h1 class="mb-3">List of Students</h1>
+
+@if (Model.Studentdetails != null && Model.Studentdetails.Any())
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>StudentId</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>PhoneNo</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var student in Model.Studentdetails)
+			{
+				<tr>
+					<td>@student.StudentId</td>
+					<td>@student.Name</td>
+					<td>@student.Email</td>
+					<td><a asp-page="./Update" class="btn btn-dark" asp-route-id="@student.StudentId">Update</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<p>No Students found!</p>
+}

@@ -1,0 +1,57 @@
+﻿@page "/StdTask"
+@model StudentDetails.Pages.StudentTasks.ContentModel
+@{
+}
+
+<h1 class="mb-3">List of Projects</h1>
+
+
+<form method="get">
+	<div class="input-group">
+		<input class="form-control" asp-for="SearchTerm" />
+		<div class="input-group-append">
+			<button type="submit" class="btn btn-primary">Search</button>
+		</div>
+	</div>
+</form>
+
+@if (Model.StudentTask != null && Model.StudentTask.Any())
+{
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ProjectId</th>
+					<th>ProjectName</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+			@*	@foreach (var student in Model.Student)
+			{
+				<tr>
+				    <td>@student.ProjectId</td>
+					<td>@student.ProjectName</td>
+
+				</tr>
+			}*@
+
+			@foreach (var studentTask in Model.StudentTask)
+			{
+						<tr>
+							<td>@studentTask.ProjectId</td>
+							<td>@studentTask.ProjectName</td>
+					<td><a asp-page="./CreateTask" class="btn btn-dark" asp-route-id="@studentTask.ProjectId">Create</a>
+								<a asp-page="./DeleteTask" class="btn btn-dark" asp-route-id="@studentTask.ProjectId">Delete</a>
+								<a asp-page="./UpdateTask" class="btn btn-dark" asp-route-id="@studentTask.ProjectId">Update</a>
+							</td>
+
+						</tr>
+			}
+			</tbody>
+		</table>
+}
+else
+{
+		<p>No Students found!</p>
+}

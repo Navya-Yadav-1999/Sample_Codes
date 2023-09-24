@@ -1,0 +1,92 @@
+﻿
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
+    <script type="text/javascript">
+        var countryObj = {
+            "USA": {
+                "Alaska": ["Galena", "Denali", "Fairbanks"],
+                "California": ["Lassen", "Sutter", "Mono"],
+                "New York": ["Delware", "Clinton", "Tioga"]
+            },
+            "UK": {
+                "Bristol": ["Ashley", "Bedminster", "Bishopston"],
+                "cornwall": ["Caradon", "Penwith", "Kerrier"],
+                "Moray": ["Alves", "Boharm", "Aberlour"]
+            },
+            "INDIA": {
+                "Andhra Pradesh": ["Visakhapatnam", "kurnool", "Guntur"],
+                "Assam": ["Jorhat", "Sivasagar", "Lakhimpur"],
+                "Goa": ["Ponda", "Salcete", "Satari"]
+            }
+        }
+        
+        window.onload = function () {
+            var countrySel = document.getElementById("Country");
+            var StateSel = document.getElementById("State");
+            var districtSel = document.getElementById("district");
+            for (var x in countryObj) {
+                countryObj.options[countrySel.option.length] = new Option(x, x);
+            }
+            CounytrySel.onchange = function () {
+                stateSel.length = 1;
+                district.length = 1;
+                for (var y in countryObj[this.value]) {
+                    StateSel.options[StateSel.options.length] = new Option(y, y);
+                }
+            }
+            StateSel.onchange = function () {
+               districtSel.length = 1;
+               var z = countryObj[countrySel.value][this.value];
+                for (var i = 0; i < z.length; i++) {
+                    districtSel.options[districtSel.options.length] = new Option(z[i], z[i]);
+                }
+        }
+    </script>
+</head>
+
+<body>
+    <form name="form1" id="form1" action="/action_page.php">
+        <div>
+            <label>Name</label>
+            <input type="text" name="Name" />
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" name="EMail" />
+        </div>
+        <div>
+            <label>Zip Code</label>
+            <input type="text" name="Zip" />
+        </div>
+        <div>
+            <label>Country:</label>
+            <select name="country" id="Country">
+                <option value="" selected="selected">Select Country</option>
+            </select>
+        </div>
+        <div>
+            <label>State:</label>
+            <select name="state" id="state">
+                <option value="" selected="selected">Select State</option>
+            </select>
+            <div>
+                <label>District:</label>
+                <select name="district" id="district">
+                    <option value="" selected="selected">Select State</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</body>
+</html>

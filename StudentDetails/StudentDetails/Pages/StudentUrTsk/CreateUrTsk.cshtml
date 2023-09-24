@@ -1,0 +1,25 @@
+﻿@page "/Insert"
+@model StudentDetails.Pages.StudentUrTsk.CreateUrTskModel
+@{
+}
+
+<h1>List of Data</h1>
+
+<form method="post">
+	<div class="mb-3">
+		<select asp-for="StudentRequest.StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
+	</div>
+
+	<div class="mb-3">
+		<select asp-for="StudentRequest.ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+	</div>
+
+
+	<div class="mb-3">
+		<button type="submit" class="btn btn-primary">Assign</button>
+	</div>
+
+	<div class="mb-3">
+		<button type="submit" class="btn btn-primary">deasign</button>
+	</div>
+</form>
